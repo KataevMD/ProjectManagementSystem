@@ -1,0 +1,36 @@
+﻿@model ProjectManagementSystem.Entities.EmployeeProject
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EmployeeProject</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Project)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Project.ProjectId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employee.EmployeeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsProjectManager)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsProjectManager)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ProjectManagementSystem.Entities.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Projects</h1>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div id="Wizard"></div>
+<script>
+    function jQueryGetWizardStepOne() {
+        $.ajax({
+            type: 'GET',
+            url: '/Projects/Wizard',
+            success: function (res) {
+                $('#Wizard').html(res);
+            },
+        })
+    }
+</script>
+<a id="GetWizardAddProject" onclick="jQueryGetWizardStepOne()" type="button" class="btn btn-outline-primary">Create New</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleCustomersCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleContractorsCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectPriority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectFilePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleCustomersCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleContractorsCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectPriority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectFilePath)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

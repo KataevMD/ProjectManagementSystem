@@ -1,0 +1,16 @@
+﻿@model ProjectManagementSystem.Models.ProjectViewModel
+<form id="CreateForm" asp-action="SaveEmployeeToProject">
+    <input name="idProject" value="@Model.Project.ProjectId" hidden/>
+    <div class="form-group">
+        <label asp-for="Developers" class="control-label"></label>
+        <select asp-for="Developers" class="form-control" asp-items="@Model.Developers" required></select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="ProjectManagers" class="control-label"></label>
+        <select class="form-control" name="ProjectManagers" asp-items="@Model.ProjectManagers" required></select>
+    </div>
+    <br />
+    <input type="submit" class="btn btn-success" value="Save" name="Confirm" />
+</form>
+<br />
